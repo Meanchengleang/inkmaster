@@ -2,7 +2,7 @@
   "name": "InkMaster Tattoo Studio",
   "short_name": "InkMaster",
   "description": "Custom Tattoos & Professional Artists",
-  "start_url": "/inkmaster/",
+  "start_url": "https://meanchengleang.github.io/inkmaster/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#000000",
