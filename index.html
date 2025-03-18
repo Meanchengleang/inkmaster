@@ -983,6 +983,162 @@
         .btn-success:hover, .btn-primary:hover {
             background: var(--accent-color);
         }
+
+        /* Updated Mobile Responsive Styles */
+        @media screen and (max-width: 428px) {
+            /* Navigation */
+            nav {
+                padding: 10px 0;
+                position: fixed;
+                top: 0;
+                z-index: 1000;
+            }
+            nav .logo {
+                font-size: 1.4em;
+            }
+            nav ul {
+                display: none;
+            }
+            nav.active ul {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background: var(--secondary-color);
+                padding: 20px 0;
+            }
+            nav ul li {
+                margin: 10px 0;
+                width: 100%;
+                text-align: center;
+            }
+            nav ul li a {
+                padding: 15px 20px;
+                width: 90%;
+                margin: 0 auto;
+                justify-content: center;
+            }
+
+            /* Hero Section */
+            .hero {
+                margin-top: 60px;
+                height: 70vh;
+            }
+            .hero h1 {
+                font-size: 2.2em;
+                padding: 0 20px;
+                line-height: 1.2;
+            }
+            .hero p {
+                font-size: 1.1em;
+                padding: 0 30px;
+            }
+            .hero .btn {
+                padding: 15px 30px;
+                font-size: 1.1em;
+                width: auto;
+            }
+
+            /* Form Elements */
+            input, textarea {
+                padding: 16px;
+                font-size: 16px; /* Prevents zoom on focus in iOS */
+                border-radius: 12px;
+            }
+            textarea {
+                min-height: 150px;
+            }
+            .button-container {
+                gap: 10px;
+            }
+            #add-image-button {
+                padding: 12px 20px;
+                width: 100%;
+                font-size: 1em;
+            }
+
+            /* Gallery Grid */
+            .gallery-section .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .gallery-section .gallery-item img {
+                height: 200px;
+            }
+
+            /* Artist Cards */
+            .info-section .artist {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            .info-section .artist img {
+                width: 120px;
+                height: 120px;
+                margin-bottom: 15px;
+            }
+
+            /* Sections Spacing */
+            .section {
+                padding: 40px 0;
+            }
+            .section h2 {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+
+            /* Date Modal */
+            .date-modal-content {
+                width: 95%;
+                padding: 15px;
+                border-radius: 20px;
+            }
+            .time-picker {
+                gap: 8px;
+            }
+            .time-scroll {
+                width: 65px;
+                height: 120px;
+            }
+
+            /* Footer */
+            footer {
+                padding: 20px 0;
+            }
+            footer a {
+                font-size: 1.3em;
+                margin: 0 8px;
+            }
+            .whatsapp-btn {
+                padding: 12px 25px;
+                margin: 15px auto;
+                font-size: 1em;
+            }
+
+            /* General Typography */
+            p {
+                font-size: 1em;
+                line-height: 1.6;
+            }
+        }
+
+        /* Add Hamburger Menu for Mobile */
+        .menu-toggle {
+            display: none;
+        }
+        @media screen and (max-width: 428px) {
+            .menu-toggle {
+                display: block;
+                font-size: 1.8em;
+                color: var(--white);
+                cursor: pointer;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -997,6 +1153,9 @@
     <nav>
         <div class="container">
             <div class="logo">InkMaster</div>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
             <ul>
                 <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
                 <li><a href="#booking"><i class="fas fa-calendar-alt"></i> Book</a></li>
@@ -1531,6 +1690,26 @@
                 });
             }, 100);
         }
+
+        function toggleMenu() {
+            const nav = document.querySelector('nav');
+            nav.classList.toggle('active');
+            const icon = document.querySelector('.menu-toggle i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const nav = document.querySelector('nav');
+            const toggle = document.querySelector('.menu-toggle');
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                nav.classList.remove('active');
+                const icon = document.querySelector('.menu-toggle i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
     </script>
 </body>
 </html>
