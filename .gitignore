@@ -1,0 +1,22 @@
+# IDE/Editor folders
+.vscode/
+.idea/
+*.sublime-*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Dependencies
+/node_modules/
+/vendor/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build/Debug files
+/dist/
+/build/
+*.log
