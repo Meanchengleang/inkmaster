@@ -881,6 +881,108 @@
                 padding: 60px 0;
             }
         }
+
+        /* Color Updates */
+        :root {
+            --primary-color: #FF3366;     /* Vibrant pink/red */
+            --secondary-color: #2C3E50;   /* Deep blue/gray */
+            --accent-color: #18DCFF;      /* Bright cyan */
+            --dark-color: #2C3E50;        /* Dark blue/gray */
+            --light-color: #F8F9FA;       /* Light gray */
+            --success-color: #2ECC71;     /* Green */
+            --white: #FFFFFF;
+        }
+
+        body {
+            background: var(--light-color);
+            color: var(--dark-color);
+        }
+
+        /* Navigation */
+        nav {
+            background: var(--secondary-color);
+        }
+
+        /* Hero Section */
+        .hero .btn {
+            background: var(--primary-color);
+        }
+        .hero .btn:hover {
+            background: var(--accent-color);
+        }
+
+        /* Form Elements */
+        input, textarea {
+            background: var(--secondary-color);
+            border-color: var(--accent-color);
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--primary-color);
+            background: var(--dark-color);
+        }
+
+        button {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        button:hover {
+            background: var(--accent-color);
+        }
+
+        /* Add Image Button */
+        #add-image-button {
+            background: var(--secondary-color);
+        }
+        #add-image-button:hover {
+            background: var(--primary-color);
+        }
+
+        /* Date Modal */
+        .time-slot {
+            background: var(--secondary-color);
+        }
+        .time-slot:hover {
+            background: var(--primary-color);
+        }
+        .time-slot.selected {
+            background: var(--accent-color);
+        }
+
+        /* Section Backgrounds */
+        .form-section, .info-section, .gallery-section, .services-section, 
+        .faq-section, .contact-section {
+            background: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            background: var(--success-color);
+        }
+        .whatsapp-btn:hover {
+            background: var(--primary-color);
+        }
+
+        /* Time Picker */
+        .time-option.selected {
+            background: var(--primary-color);
+        }
+        .time-scroll::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+        }
+
+        /* Submit Buttons */
+        .btn-success, .btn-primary {
+            background: var(--primary-color);
+        }
+        .btn-success:hover, .btn-primary:hover {
+            background: var(--accent-color);
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
