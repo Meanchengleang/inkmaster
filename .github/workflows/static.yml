@@ -18,7 +18,7 @@ jobs:
       group: "pages"
       cancel-in-progress: false
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Pages
         uses: actions/configure-pages@v3
