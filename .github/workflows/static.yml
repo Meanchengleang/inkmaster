@@ -4,29 +4,38 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: .
-
   deploy:
-    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+      # Checkout the repository code
+      - uses: actions/checkout@v4
+
+      # Optional: Install Node.js if your site needs a build step (e.g., React, Vue, etc.)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20' # Adjust to your preferred version
+
+      # Optional: Build the site if required (uncomment and adjust as needed)
+      # - name: Build
+      #   run: npm install && npm run build
+
+      # Configure GitHub Pages
+      - uses: actions/configure-pages@v3
+
+      # Upload the site files as an artifact
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: . # Change to 'dist' or your build output folder if applicable
+
+      # Deploy the artifact to GitHub Pages
+      - id: deployment
+        uses: actions/deploy-pages@v3
