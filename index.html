@@ -781,6 +781,106 @@
             justify-content: center;
             scroll-snap-align: center;
         }
+
+        /* Tablet Specific Styles */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            /* Navigation */
+            nav .logo {
+                font-size: 1.8em;
+            }
+            nav ul li {
+                margin-left: 15px;
+            }
+            nav ul li a {
+                font-size: 0.9em;
+                padding: 8px 12px;
+            }
+
+            /* Hero Section */
+            .hero h1 {
+                font-size: 3.5em;
+            }
+            .hero p {
+                font-size: 1.3em;
+            }
+
+            /* Grid Layouts */
+            .gallery-section .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            /* Form Elements */
+            input, textarea {
+                padding: 20px;
+                font-size: 1.1em;
+            }
+
+            /* Date Modal */
+            .date-modal-content {
+                max-width: 500px;
+            }
+            .time-picker {
+                gap: 20px;
+            }
+            .time-scroll {
+                width: 80px;
+            }
+
+            /* Artists Section */
+            .info-section .artist {
+                padding: 20px;
+            }
+            .info-section .artist img {
+                width: 100px;
+                height: 100px;
+            }
+
+            /* Two Column Layout for Better Space Usage */
+            .section {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 20px;
+            }
+
+            /* Adjust Image Uploads */
+            .uploaded-image {
+                max-width: 120px;
+            }
+            .uploaded-image img {
+                width: 120px;
+                height: 120px;
+            }
+
+            /* Better Touch Targets */
+            button {
+                min-height: 50px;
+            }
+            
+            .time-option {
+                height: 45px;
+                font-size: 1.1em;
+            }
+
+            /* Optimize Lightbox */
+            .lightbox img {
+                max-width: 80%;
+                max-height: 80vh;
+            }
+        }
+
+        /* Landscape Tablet */
+        @media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+            .hero {
+                height: 70vh;
+            }
+            .container {
+                max-width: 90%;
+            }
+            .section {
+                padding: 60px 0;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
