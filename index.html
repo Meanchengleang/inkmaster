@@ -689,38 +689,6 @@
                         <i class="fas fa-paper-plane"></i> Submit Booking
                     </button>
                 </form>
-                <?php
-                $booking_file = 'bookings.txt';
-                if (!file_exists($booking_file)) {
-                    file_put_contents($booking_file, '');
-                    chmod($booking_file, 0666);
-                }
-                if (!is_writable($booking_file)) {
-                    echo "<p class='success' style='color: #FF5555;'>Error: Cannot write to bookings.txt. Check server permissions or <a href='mailto:support@inkmaster.com'>contact support</a>.</p>";
-                } elseif (isset($_POST['book'])) {
-                    $name = htmlspecialchars($_POST['name']);
-                    $email = htmlspecialchars($_POST['email']);
-                    $date = htmlspecialchars($_POST['date']);
-                    $details = htmlspecialchars($_POST['details']);
-                    $image_paths = [];
-                    if (isset($_FILES['tattoo_image']) && !empty($_FILES['tattoo_image']['tmp_name'][0])) {
-                        foreach ($_FILES['tattoo_image']['tmp_name'] as $key => $tmp_name) {
-                            $image_name = basename($_FILES['tattoo_image']['name'][$key]);
-                            $image_path = 'uploads/' . $image_name;
-                            if (move_uploaded_file($tmp_name, $image_path)) {
-                                $image_paths[] = $image_path;
-                            }
-                        }
-                    }
-                    $image_paths_str = implode(', ', $image_paths);
-                    $booking_data = "Name: $name, Email: $email, Date: $date, Details: $details, Images: $image_paths_str\n";
-                    if (file_put_contents($booking_file, $booking_data, FILE_APPEND) !== false) {
-                        echo "<p class='success'>Booking submitted successfully! We’ll get back to you soon.</p>";
-                    } else {
-                        echo "<p class='success' style='color: #FF5555;'>Error: Failed to save booking. Try again or <a href='mailto:support@inkmaster.com'>contact support</a>.</p>";
-                    }
-                }
-                ?>
             </div>
         </section>
 
@@ -826,41 +794,12 @@
                     <textarea name="review" placeholder="Your Review" required></textarea>
                     <button type="submit" name="submit_review">Submit Review</button>
                 </form>
-                <?php
-                $review_file = 'reviews.txt';
-                if (!file_exists($review_file)) {
-                    file_put_contents($review_file, '');
-                    chmod($review_file, 0666);
-                }
-                if (!is_writable($review_file)) {
-                    echo "<p class='success' style='color: #FF5555;'>Error: Cannot write to reviews.txt. Check server permissions or <a href='mailto:support@inkmaster.com'>contact support</a>.</p>";
-                } elseif (isset($_POST['submit_review'])) {
-                    $reviewer_name = htmlspecialchars($_POST['reviewer_name']);
-                    $review = htmlspecialchars($_POST['review']);
-                    $review_data = "Name: $reviewer_name, Review: $review\n";
-                    if (file_put_contents($review_file, $review_data, FILE_APPEND) !== false) {
-                        echo "<p class='success'>Review submitted successfully! Thanks for the feedback.</p>";
-                    } else {
-                        echo "<p class='success' style='color: #FF5555;'>Error: Failed to save review. Try again or <a href='mailto:support@inkmaster.com'>contact support</a>.</p>";
-                    }
-                }
-                ?>
             </div>
         </section>
 
         <!-- Display Reviews -->
         <section class="reviews" id="reviews">
             <h2>Customer Reviews</h2>
-            <?php
-            if (file_exists($review_file) && is_readable($review_file)) {
-                $reviews = file($review_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-                foreach ($reviews as $review) {
-                    echo "<div class='review'><p>" . nl2br(htmlspecialchars($review)) . "</p></div>";
-                }
-            } else {
-                echo "<p>No reviews yet—be the first to share your thoughts!</p>";
-            }
-            ?>
         </section>
 
         <!-- Contact Section with Map -->
@@ -899,7 +838,7 @@
         <div class="date-modal-content">
             <h3>Select Appointment Date & Time</h3>
             <div class="date-selection">
-                <input type="date" id="modalDate" class="form-control" min="<?php echo date('Y-m-d'); ?>">
+                <input type="date" id="modalDate" class="form-control" min="2024-01-09">
                 <div class="time-picker-container">
                     <h4>Select Time</h4>
                     <div class="time-picker">
