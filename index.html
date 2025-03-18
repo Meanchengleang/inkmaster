@@ -96,11 +96,42 @@
             padding: 20px 25px;
             font-family: 'Inter', sans-serif;
             cursor: pointer;
-            position: relative;
-            background: #3498db;
+            background: #1A1A1A;
             color: white;
+            position: relative;
             -webkit-appearance: none;
             appearance: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        input[type="date"]::before {
+            content: "\f073  Select date and time";  /* Calendar icon and text */
+            font-family: "Font Awesome 5 Free", 'Inter', sans-serif;
+            font-weight: 900;
+            color: white;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            opacity: 0;
+            cursor: pointer;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        input[type="date"][data-has-value="true"]::before {
+            content: attr(data-display-value);
+            font-family: 'Inter', sans-serif;
+            font-weight: normal;
         }
 
         input[type="date"]::-webkit-calendar-picker-indicator {
@@ -350,16 +381,135 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3em; }
-            .hero p { font-size: 1.2em; }
-            nav ul li { margin-left: 15px; }
-            .info-section .artist { flex-direction: column; text-align: center; }
-            .info-section .artist img { margin-bottom: 15px; }
-            .gallery-section .gallery-grid { grid-template-columns: 1fr; }
-            button { padding: 12px; font-size: 1.1em; }
-            .contact-section .map iframe { height: 200px; }
+            /* Navigation */
+            nav {
+                padding: 15px 0;
+            }
+            nav .container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            nav ul li {
+                margin: 5px;
+            }
+            nav ul li a {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+
+            /* Hero Section */
+            .hero {
+                margin-top: 120px;
+                height: 80vh;
+            }
+            .hero h1 { 
+                font-size: 2.5em; 
+                padding: 0 15px;
+            }
+            .hero p { 
+                font-size: 1.1em; 
+                padding: 0 20px;
+            }
+            .hero .btn {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            /* Form Section */
+            .form-section {
+                padding: 20px;
+            }
+            input, textarea {
+                padding: 15px;
+                font-size: 1em;
+            }
+            .button-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            #add-image-button {
+                width: 100%;
+            }
+
+            /* Artists Section */
+            .info-section .artist {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            .info-section .artist img {
+                margin: 0 auto 15px;
+                width: 150px;
+                height: 150px;
+            }
+
+            /* Gallery Section */
+            .gallery-section .gallery-grid {
+                gap: 15px;
+            }
+            .gallery-section .gallery-item {
+                margin-bottom: 20px;
+            }
+
+            /* Date Modal */
+            .date-modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+            .time-picker {
+                gap: 5px;
+            }
+            .time-scroll {
+                width: 60px;
+            }
+
+            /* Contact Section */
+            .contact-section iframe {
+                height: 250px;
+            }
+
+            /* Footer */
+            footer {
+                padding: 30px 15px;
+            }
+            footer a {
+                margin: 0 10px;
+                font-size: 1.2em;
+            }
+            .whatsapp-btn {
+                display: flex;
+                justify-content: center;
+                width: 100%;
+                margin: 15px 0;
+                padding: 12px 20px;
+            }
         }
-        
+
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            .section h2 {
+                font-size: 1.8em;
+            }
+            nav .logo {
+                font-size: 1.5em;
+            }
+            .uploaded-image {
+                max-width: 100px;
+            }
+            .uploaded-image img {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
         /* Custom styles to replace Bootstrap */
         .form-control {
             width: 100%; padding: 20px; /* increased padding */
